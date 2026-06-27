@@ -20,11 +20,7 @@ TODO: replace the URL below with a real screenshot or GIF of the app
 
 ## 🚀 Live demo
 
-> Deploy to [Streamlit Community Cloud](https://share.streamlit.io/) (free,
-> ~2 min): connect this repo, point it at `app.py`, hit deploy.
-> Then paste the URL here.
-
-**[👉 Open the live demo](https://share.streamlit.io/)** <!-- TODO: replace with your deployed URL -->
+[👉 Open the live demo]((https://nsfneajrsi4njfs5ja3qgb.streamlit.app/))
 
 ---
 
