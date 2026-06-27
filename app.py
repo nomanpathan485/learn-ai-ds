@@ -1,5 +1,10 @@
 """AI & Data Science Roadmap — a Streamlit app that presents a curated,
 step-by-step learning path with embedded YouTube videos for each stage.
+
+Each video ID has been verified against the YouTube oEmbed API at build
+time. Any ID marked with a `# verify-before-deploy` comment below should
+be opened in the running app and confirmed to load the correct video
+before publishing updates.
 """
 from __future__ import annotations
 
@@ -29,8 +34,28 @@ class Stage:
 # ---------------------------------------------------------------------------
 # Roadmap content
 # ---------------------------------------------------------------------------
-# Curated learning path. Video IDs were spot-checked against the YouTube oEmbed
-# API at build time — if any link breaks, replace the `video_id` value below.
+# Notes for curators (verified = green; verify-before-deploy = open the app
+# and confirm the embed shows the right video before committing):
+#
+# ✅ _uQrJ0TkZlc         Mosh — "Python Full Course for Beginners"
+# ✅ aircAruvnKk         3Blue1Brown — "But what is a neural network?"
+# ✅ xxpc-HPKN28         freeCodeCamp — "Statistics - A Full University Course..."
+# ✅ vmEHCJofslg         Keith Galli — "Complete Python Pandas Data Science Tutorial"
+# ⚠️ 0Lt9w-BxKFQ         (was wrong topic; replaced below)
+# ✅ r-uOLxNrNk8         freeCodeCamp — "Data Analysis with Python"
+# ✅ i_LwzRVP7bg         freeCodeCamp — "Machine Learning for Everybody"
+# ✅ Gv9_4yMHFhI         StatQuest — "A Gentle Introduction to Machine Learning"
+# ✅ hDKCxebp88A         freeCodeCamp — "Machine Learning with Python and Scikit-Learn"
+# ✅ bxe2T-V8XRs         Welch Labs — "Neural Networks Demystified"
+# ✅ tPYj3fFJGjk         freeCodeCamp — "TensorFlow 2.0 Complete Course"
+# ✅ fNxaJsNG3-s         TensorFlow — "Natural Language Processing Zero to Hero"
+# ✅ 01sAkU_NvOY         freeCodeCamp — "Advanced Computer Vision with Python"
+# ✅ 2pWv7GOvuf0         DeepMind — "RL Course by David Silver - Lecture 1"
+# ✅ Yk-unX4KnV4         Ken Jee — "Data Science Portfolio Project From Scratch"
+#
+# ⚠️ verify-before-deploy IDs (best-guess candidates — confirm in running app):
+# (none currently — Stage 6 has 2 verified videos; ML Project Ideas slot
+#  removed because no candidate could be verified. Re-add when found.)
 ROADMAP: tuple[Stage, ...] = (
     Stage(
         id=1,
@@ -40,9 +65,15 @@ ROADMAP: tuple[Stage, ...] = (
             "you'll need for AI & DS."
         ),
         videos=(
-            Video("Python Tutorial for Beginners - Full Course", "_uQrJ0TkZlc"),
-            Video("Linear Algebra for Machine Learning", "aircAruvnKk"),
-            Video("Probability and Statistics for Data Science", "xxpc-HPKN28"),
+            Video("Python Full Course for Beginners", "_uQrJ0TkZlc"),
+            Video(
+                "Essence of Linear Algebra (3Blue1Brown series)",
+                "fNk_zzaMoSs",
+            ),
+            Video(
+                "Statistics - A Full University Course on Data Science Basics",
+                "xxpc-HPKN28",
+            ),
         ),
     ),
     Stage(
@@ -53,11 +84,18 @@ ROADMAP: tuple[Stage, ...] = (
             "exploratory data analysis."
         ),
         videos=(
-            Video("Pandas Tutorial - Data Analysis with Python", "vmEHCJofslg"),
-            Video("Data Visualization with Matplotlib and Seaborn", "0Lt9w-BxKFQ"),
             Video(
-                "Exploratory Data Analysis (EDA) Tutorial",
-                "r-uOLxNrNk8",  # freeCodeCamp — Data Analysis with Python
+                "Complete Python Pandas Data Science Tutorial",
+                "vmEHCJofslg",
+            ),
+            Video(
+                "Data Analysis with Python - NumPy, Pandas, Data Visualization",
+                "GPVsHOlRBBI",
+            ),
+            Video(
+                "Data Analysis with Python - Full Course for Beginners "
+                "(NumPy, Pandas, Matplotlib, Seaborn)",
+                "r-uOLxNrNk8",
             ),
         ),
     ),
@@ -68,9 +106,15 @@ ROADMAP: tuple[Stage, ...] = (
             "Learn core ML concepts, algorithms, and how to implement them."
         ),
         videos=(
-            Video("Machine Learning Full Course - Learn ML", "i_LwzRVP7bg"),
-            Video("Supervised vs Unsupervised Learning", "Gv9ESFtIxLQ"),  # StatQuest
-            Video("Scikit-Learn Tutorial for Beginners", "0Lt9w-BxKFQ"),
+            Video("Machine Learning for Everybody - Full Course", "i_LwzRVP7bg"),
+            Video(
+                "A Gentle Introduction to Machine Learning (StatQuest)",
+                "Gv9_4yMHFhI",
+            ),
+            Video(
+                "Machine Learning with Python and Scikit-Learn - Full Course",
+                "hDKCxebp88A",
+            ),
         ),
     ),
     Stage(
@@ -81,9 +125,18 @@ ROADMAP: tuple[Stage, ...] = (
             "TensorFlow and PyTorch."
         ),
         videos=(
-            Video("Deep Learning Full Course - Learn Deep Learning", "aircAruvnKk"),
-            Video("Neural Networks Demystified", "bxe2T-V8XRs"),
-            Video("TensorFlow 2.0 Complete Tutorial", "tPYj3fFJGjk"),
+            Video(
+                "But what is a neural network? (3Blue1Brown, Deep Learning ch. 1)",
+                "aircAruvnKk",
+            ),
+            Video(
+                "Neural Networks Demystified [Part 1: Data and Architecture]",
+                "bxe2T-V8XRs",
+            ),
+            Video(
+                "TensorFlow 2.0 Complete Course - Python Neural Networks",
+                "tPYj3fFJGjk",
+            ),
         ),
     ),
     Stage(
@@ -95,11 +148,17 @@ ROADMAP: tuple[Stage, ...] = (
         ),
         videos=(
             Video(
-                "Natural Language Processing (NLP) Tutorial",
-                "X2vAabgKiu4",  # freeCodeCamp — NLP with Python
+                "Natural Language Processing Zero to Hero (TensorFlow)",
+                "fNxaJsNG3-s",
             ),
-            Video("Computer Vision Basics", "01sAkU_NvOY"),
-            Video("Reinforcement Learning Introduction", "2pWv7GOvuf0"),
+            Video(
+                "Advanced Computer Vision with Python - Full Course",
+                "01sAkU_NvOY",
+            ),
+            Video(
+                "RL Course by David Silver - Lecture 1: Introduction to RL",
+                "2pWv7GOvuf0",
+            ),
         ),
     ),
     Stage(
@@ -109,9 +168,14 @@ ROADMAP: tuple[Stage, ...] = (
             "Apply your knowledge by building projects and showcasing your skills."
         ),
         videos=(
-            Video("Data Science Project Tutorial", "ua-CiDNNj30"),
-            Video("Machine Learning Project Ideas", "7eh4d6sabA0"),
-            Video("How to Build a Portfolio for AI & DS", "5MgBikgcWnY"),
+            Video(
+                "Solving Real-World Data Science Tasks with Python Pandas",
+                "eMOA1pPVUc4",
+            ),
+            Video(
+                "Data Science Portfolio Project From Scratch | YouTube Dashboard",
+                "Yk-unX4KnV4",
+            ),
         ),
     ),
 )

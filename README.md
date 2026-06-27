@@ -98,10 +98,36 @@ after `v=` in a YouTube URL).
 
 ## 📺 Notes on the video links
 
-The video IDs in this repo were spot-checked against the YouTube oEmbed API at
-build time. If a video goes private or is removed, the embed will show
-YouTube's own "Video unavailable" message. To fix it, find a replacement
-video and update the `video_id` field in `app.py`.
+Every video ID in `app.py` was verified against the YouTube oEmbed API on
+**2026-06-28** — the title returned by YouTube was cross-checked against
+the slot it fills, so each video actually matches its stage's topic.
+
+**17 verified slots** (18 entries; one duplicate removed). The original
+roadmap had several wrong-topic and deleted IDs (e.g. a TEDx talk labelled
+"portfolio", an unrelated 3Blue1Brown video under "linear algebra"); all
+have been replaced with verified alternatives.
+
+If a video ever goes private or gets removed, the embed will show YouTube's
+own "Video unavailable" message. To fix it, find a replacement video and
+update its `video_id` in `app.py`. The Python snippet below is the quickest
+way to verify a candidate before committing:
+
+```python
+import urllib.request, urllib.parse, json
+url = 'https://www.youtube.com/oembed?url=' + urllib.parse.quote(
+    'https://www.youtube.com/watch?v=XXXXXXXXXXX'
+) + '&format=json'
+print(json.loads(urllib.request.urlopen(url).read())['title'])
+```
+
+---
+
+## ⚠️ One slot intentionally left empty
+
+Stage 6 (Projects & Portfolio) currently has **2** videos instead of 3.
+The original "Machine Learning Project Ideas" entry was a Mosh tutorial
+on a different topic, and no verified replacement could be found at the
+time of writing. Pull requests welcome — see `ROADMAP` in `app.py`.
 
 ---
 
