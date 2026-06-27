@@ -20,7 +20,7 @@ YouTube videos, embedded inline so you can watch without leaving the page.
 
 ## 🚀 Live demo
 
-[👉 Open the live demo]((https://nsfneajrsi4njfs5ja3qgb.streamlit.app/))
+[👉 Open the live demo](https://nomanpathan485-learn-ai-ds.streamlit.app/)
 
 ---
 
