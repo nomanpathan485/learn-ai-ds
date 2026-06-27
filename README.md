@@ -5,11 +5,11 @@ learning path for getting into AI & Data Science. Each stage of the roadmap is
 shown as an expandable panel with a short description and a handful of curated
 YouTube videos, embedded inline so you can watch without leaving the page.
 
-<!--
-TODO: replace the URL below with a real screenshot or GIF of the app
-(e.g. drag a file named `screenshot.png` into the repo root, then commit).
-![App screenshot](./screenshot.png)
--->
+![App screenshot — home view](./docs/screenshots/home.png)
+
+*A stage expanded:*
+
+![App screenshot — stage expanded](./docs/screenshots/stage-expanded.png)
 
 <p align="center">
   <img alt="Python" src="https://img.shields.io/badge/python-3.9%2B-blue">
